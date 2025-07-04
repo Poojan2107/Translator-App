@@ -1,0 +1,277 @@
+body,
+html {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", "Consolas", "Fira Mono", "Menlo", monospace;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.translator-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.translator-title,
+.translator-heading-animated {
+  font-size: 2.7rem;
+  font-weight: bold;
+  color: #00fff7;
+  margin-bottom: 2.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 16px #00fff7, 0 0 32px #8f00ff99, 0 0 4px #39ff14;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  text-align: center;
+  animation: glowPulse 2.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 16px #00fff7, 0 0 32px #8f00ff99, 0 0 4px #39ff14;
+    color: #00fff7;
+  }
+  50% {
+    text-shadow: 0 0 32px #39ff14, 0 0 48px #00fff7cc, 0 0 8px #8f00ff;
+    color: #39ff14;
+  }
+  100% {
+    text-shadow: 0 0 16px #00fff7, 0 0 32px #8f00ff99, 0 0 4px #39ff14;
+    color: #00fff7;
+  }
+}
+
+.translator-container {
+  background: linear-gradient(135deg, #181c24 60%, #1a1a1a 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 #00fff733, 0 1.5px 4px 0 #00fff722;
+  padding: 2.8rem 2.8rem 2.5rem 2.8rem;
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+  border: 1.5px solid #232d3d;
+  align-items: stretch;
+  margin: 0 1rem;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.translator-textarea,
+.translator-result-text {
+  width: 100%;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 1.3rem 1.3rem;
+  font-size: 1.15rem;
+  background: #161b22;
+  color: #00fff7;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  box-shadow: 0 0 0 1.5px #232d3d, 0 0 12px #00fff722 inset;
+  margin-bottom: 0.2rem;
+  transition: box-shadow 0.25s, background 0.25s, color 0.25s;
+  resize: vertical;
+}
+.translator-textarea:focus {
+  outline: none;
+  background: #181c24;
+  color: #39ff14;
+  box-shadow: 0 0 0 3px #00fff7, 0 0 24px #00fff7cc, 0 0 16px #39ff14;
+  animation: glowInput 1.2s infinite alternate;
+}
+.translator-select:focus {
+  outline: none;
+  background: #181c24;
+  color: #39ff14;
+  box-shadow: 0 0 0 3px #8f00ff, 0 0 24px #8f00ffcc, 0 0 16px #00fff7;
+  animation: glowInput 1.2s infinite alternate;
+}
+@keyframes glowInput {
+  0% {
+    box-shadow: 0 0 0 3px #00fff7, 0 0 24px #00fff7cc, 0 0 16px #39ff14;
+  }
+  100% {
+    box-shadow: 0 0 0 3px #39ff14, 0 0 24px #39ff14cc, 0 0 16px #00fff7;
+  }
+}
+
+.translator-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 0.5rem;
+  justify-content: center !important;
+}
+.translator-label {
+  font-weight: 600;
+  color: #00fff7;
+  font-size: 1.08rem;
+  letter-spacing: 1px;
+}
+.translator-select {
+  flex: 1;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  font-size: 1.05rem;
+  background: #181c24;
+  color: #00fff7;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  box-shadow: 0 0 0 1.5px #232d3d, 0 0 8px #00fff722 inset;
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+
+.translator-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #00fff7 0%, #8f00ff 100%);
+  color: #0f0f0f;
+  font-weight: 700;
+  font-size: 1.18rem;
+  padding: 1.1rem 0;
+  border: none;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  box-shadow: 0 0 16px #00fff7cc, 0 2px 8px #8f00ff44;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.translator-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #39ff14 0%, #00fff7 100%);
+  color: #181c24;
+  box-shadow: 0 0 32px #39ff14cc, 0 2px 16px #00fff7cc;
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 0 0 8px #39ff14, 0 0 16px #00fff7;
+}
+.translator-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.translator-error {
+  color: #ff3c3c;
+  background: #1a1a1a;
+  border: 1px solid #8f00ff;
+  border-radius: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.7rem;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  box-shadow: 0 0 8px #8f00ff44;
+}
+
+.translator-result {
+  margin-top: 1.2rem;
+  background: #161b22;
+  border-radius: 0.7rem;
+  padding: 1.3rem 1.3rem;
+  color: #00fff7;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  box-shadow: 0 0 0 1.5px #232d3d, 0 0 12px #00fff722 inset;
+  border: none;
+  transition: box-shadow 0.25s, background 0.25s, color 0.25s;
+  min-height: 3.2rem;
+  margin-bottom: 0.5rem;
+}
+.translator-result-label {
+  font-weight: 700;
+  color: #8f00ff;
+  font-size: 1.13rem;
+  letter-spacing: 1px;
+}
+.translator-result-text {
+  margin-top: 0.7rem;
+  font-size: 1.15rem;
+  color: #00fff7;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.translator-footer {
+  margin-top: 2.5rem;
+  color: #00fff7;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #00fff7, 0 0 16px #00fff744;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  text-align: center !important;
+}
+
+@media (max-width: 700px) {
+  .translator-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    gap: 1.1rem;
+  }
+  .translator-title,
+  .translator-heading-animated {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .translator-result,
+  .translator-textarea,
+  .translator-result-text {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem;
+  }
+  .translator-btn {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
